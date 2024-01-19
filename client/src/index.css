@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: custom;
+    src: url(assets/font/croisant.ttf);
+}
+@font-face {
+    font-family: normal;
+    src: url(assets/font/Poppins-Regular.ttf);
+}
+
+body{
+    background-color: rgb(241, 245, 241);
+}
+
+.heading{
+    font-family: custom;
+}
+
+.pop-text{
+    font-family: normal;
+}
+
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
+
+  .red{
+color: rgb(65, 0, 0);
+  }
