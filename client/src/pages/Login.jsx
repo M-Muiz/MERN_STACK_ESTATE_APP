@@ -34,8 +34,6 @@ const Login = () => {
         dispatch(loginFail(resData.message));
         return;
       }
-      console.log(resData)
-      console.log(token)
       dispatch(loginSuccess(resData.rest));
       navigate("/");
     } catch (error) {
