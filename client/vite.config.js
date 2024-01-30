@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://mern-stack-estate-app.vercel.app/api',
+        target: 'http://localhost:9000/',
         secure: false,
       },
     },

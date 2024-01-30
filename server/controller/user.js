@@ -34,7 +34,7 @@ router.post("/login", async (req, res, next) => {
     const { password: pass, ...rest } = user._doc;
     res.cookie("access_token", token)
       .status(200)
-      .json(rest);
+      .json({ rest, token });
   } catch (err) {
     next(err);
   }
