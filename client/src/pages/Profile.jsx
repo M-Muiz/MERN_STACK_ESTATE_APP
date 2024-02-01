@@ -105,6 +105,7 @@ const Profile = () => {
         dispatch(logOutFail(data.message))
         return;
       }
+      localStorage.clear()
       dispatch(logOutSuccess(data))
     } catch (error) {
       dispatch(logOutFail(error.message))
@@ -116,6 +117,7 @@ const Profile = () => {
       dispatch(deleteUserStart());
       const res = await fetch(`https://mern-stack-estate-app.vercel.app/api/user/delete/${currentUser._id}`, {
         method: 'DELETE',
+        Authorization: JSON.parse(localStorage.getItem('access_token'))
       });
       const data = await res.json();
       if (data.success === false) {
@@ -150,11 +152,11 @@ const Profile = () => {
   const handleListingDelete = async (list_id) => {
     try {
       const res = await fetch(`https://mern-stack-estate-app.vercel.app/api/listing/delete_listing/${list_id}`, {
-        method: "DELETE"
+        method: "DELETE",
+        Authorization: JSON.parse(localStorage.getItem('access_token'))
       });
       const resData = await res.json();
       if (resData.success === false) {
-        console.log(resData.message)
         return
       }
       setUserListing((prev) => prev.filter((listing) => listing._id !== list_id));

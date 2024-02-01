@@ -142,6 +142,7 @@ const UpdateListing = () => {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: JSON.parse(localStorage.getItem('access_token'))
                 },
                 body: JSON.stringify({
                     ...data,
