@@ -35,6 +35,7 @@ const Login = () => {
         return;
       }
       dispatch(loginSuccess(resData.rest));
+      localStorage.setItem("access_token", JSON.stringify(resData.token));
       navigate("/");
     } catch (error) {
       dispatch(loginFail(error.message));
