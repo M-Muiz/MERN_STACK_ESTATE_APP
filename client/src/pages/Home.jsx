@@ -13,16 +13,22 @@ const Home = () => {
   const [offerListings, setOfferListings] = useState([]);
   const [sellListings, setSellListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+console.log(loading)
 
   useEffect(() => {
     const fetchOfferListing = async () => {
       try {
+        setLoading(true)
         const res = await fetch('https://mern-stack-estate-app.vercel.app/api/listing/get_listings?offer=true&limit=3');
         const offerLists = await res.json()
         fetchRentListing()
         setOfferListings(offerLists)
+        setLoading(false)
       } catch (err) {
         console.log(err)
+        setLoading(fasle)
       }
     }
     fetchOfferListing();
@@ -45,6 +51,7 @@ const Home = () => {
         const sellLists = await res.json()
         setSellListings(sellLists)
       } catch (err) {
+        setLoading(fasle)
         console.log(err)
       }
     }
@@ -60,6 +67,13 @@ const Home = () => {
           <button className='hover:underline text-green-900 font-semibold'>Let's Start Now.</button>
         </Link>
       </div>
+
+{
+  loading && <div className="w-full flex justify-center items-center gap-1"> 
+            <p className='text-6xl font-semibold my-8 heading text-green-800'>Loading</p>
+            <div class="h-6 w-6 animate-spin rounded-full border-b-4 border-green-800"/>
+    </div>
+}
 
       <Swiper navigation>
         {offerListings && offerListings.length > 0 && offerListings.map((listing) => (
