@@ -15,7 +15,6 @@ const Home = () => {
   const [rentListings, setRentListings] = useState([]);
   const [loading, setLoading] = useState(false);
 
-console.log(loading)
 
   useEffect(() => {
     const fetchOfferListing = async () => {
